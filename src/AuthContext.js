@@ -8,7 +8,6 @@ export function AuthProvider(Props) {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        // @todo: validate token with api
         if (token) {
             setAuth({
                 token

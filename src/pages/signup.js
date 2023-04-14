@@ -8,17 +8,18 @@ export const Signup = (props) => {
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [errorMsg, setErrorMsg] = useState([]);
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("trying to login");
         const bodyParameters = {
             email,
             fullName,
-            password
+            password,
+            passwordConfirmation
         };
 
         const baseUrl = "http://localhost:8000"
@@ -46,14 +47,17 @@ export const Signup = (props) => {
             <form>
                 <h2>Signup</h2>
 
-                <input type="email" className="form-control" placeholder="email" value={email}
+                <input type="email" className="form-control" placeholder="Email" value={email}
                     onChange={e => setEmail(e.target.value)} />
                 <br />
-                <input type="text" className="form-control" placeholder="fullName" value={fullName}
+                <input type="text" className="form-control" placeholder="Full Name" value={fullName}
                     onChange={e => setFullName(e.target.value)} />
                 <br />
-                <input type="password" className="form-control" placeholder="password" value={password}
+                <input type="password" className="form-control" placeholder="Password" value={password}
                     onChange={e => setPassword(e.target.value)} />
+                <br />
+                <input type="password" className="form-control" placeholder="Password Confirmation" value={passwordConfirmation}
+                    onChange={e => setPasswordConfirmation(e.target.value)} />
                 <br />
                 <button className="btn btn-primary" onClick={submitHandler}>Signup</button>
 
